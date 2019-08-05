@@ -13,10 +13,13 @@ jobs:
             - sinogermany-haskell-tutorial-{{ checksum "stack.yaml" }}
       - run:
           name: Resolve/Update Dependencies
-          command: stack --no-terminal setup
+          command: stack --no-terminal setup && stack install hlint tasty-discover hpc-threshold
       - run:
           name: Run tests
-          command: stack --no-terminal test
+          command: stack --no-terminal test --coverage
+      - run:
+          name: Collect coverage information
+          command: stack hpc report --all 2>&1 | hpc-threshold
       - save_cache:
           name: Cache Dependencies
           key: sinogermany-haskell-tutorial-{{ checksum "stack.yaml" }}-{{ checksum "package.yaml" }}
