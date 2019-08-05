@@ -1,0 +1,39 @@
+name:                haskell-tutorial
+version:             1.0.0.0
+github:              "sinogermany/haskell-tutorial"
+license:             BSD3
+author:              "Daniel Deng"
+maintainer:          "haskell-tutorial@example.com"
+copyright:           "Haskell Lovers"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/sinogermany/haskell-tutorial>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+tests:
+  haskell-tutorial-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - haskell-tutorial
+    - tasty
+    - tasty-hspec

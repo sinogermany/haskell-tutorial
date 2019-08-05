@@ -1,0 +1,10 @@
+version: '3.4'
+services:
+  haskell:
+    image: haskell-tutorial:local
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    volumes:
+      - .:/haskell-tutorial
+    working_dir: /haskell-tutorial
