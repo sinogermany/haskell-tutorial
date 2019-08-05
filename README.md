@@ -1,3 +1,5 @@
+Circle CI Build - [![CircleCI](https://circleci.com/gh/sinogermany/haskell-tutorial.svg?style=svg)](https://circleci.com/gh/sinogermany/haskell-tutorial)
+
 # Haskell Tutorial
 
 This repo consists of exercises to learn Haskell and Functional Programming.
