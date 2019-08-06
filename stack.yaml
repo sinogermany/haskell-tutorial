@@ -38,6 +38,8 @@ packages:
 # using the same syntax as the packages field.
 # (e.g., acme-missiles-0.3)
 # extra-deps: []
+extra-deps:
+- hindent-5.3.1 # needed to install hfmt
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

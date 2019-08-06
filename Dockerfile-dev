@@ -2,14 +2,12 @@ FROM haskell:8.6.5
 
 WORKDIR /haskell-tutorial
 
-# installing hlint takes a long time and we should cache the docker build
-RUN stack install hlint
-
 ADD stack.yaml package.yaml /haskell-tutorial/
+
 RUN \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y libpcre3-dev && \
     stack update && \
-    stack build --test --only-dependencies && \
-    stack install tasty-discover hpc-threshold
+    stack install hfmt hlint tasty-discover hpc-threshold && \
+    stack build --test --only-dependencies 
