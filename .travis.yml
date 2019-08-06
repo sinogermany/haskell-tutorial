@@ -1,0 +1,7 @@
+language: minimal
+
+install:
+- docker-compose build haskell
+
+script:
+- ./scripts/style-check-and-unit-test.sh
