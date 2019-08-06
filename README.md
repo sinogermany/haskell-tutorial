@@ -1,3 +1,5 @@
+Travis Build: [![Build Status](https://travis-ci.com/sinogermany/haskell-tutorial.svg?branch=master)](https://travis-ci.com/sinogermany/haskell-tutorial)
+
 # Haskell Tutorial
 
 This repo consists of exercises to learn Haskell and Functional Programming.
@@ -19,7 +21,7 @@ however we will also occasionally make some minor adjustment. Style check is don
 
 ## Installing dependencies
 
-See dependencies specified in [`package.yaml`](package.yaml). 
+See dependencies specified in [`package.yaml`](package.yaml).
 - To install the dependencies in your local environment, run `stack build --test --only-dependencies`.
 - To run the code in a docker container, run `docker-compose build haskell`.
 
