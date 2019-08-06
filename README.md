@@ -26,7 +26,7 @@ See dependencies specified in [`package.yaml`](package.yaml).
 ## Running the tests (docker required)
 
 - Build the docker image `docker-compose build haskell` (takes a few minutes)
-- Run the style check and test `docker-compose run --rm haskell ./scripts/docker/style-check-and-unit-test.sh`
+- Run the style check and test `docker-compose run --rm haskell ./scripts/style-check-and-unit-test.sh`
 - Test coverage report will be included in the console output.
 
 ## Useful Links

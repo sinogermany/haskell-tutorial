@@ -9,5 +9,5 @@ RUN \
     apt-get upgrade -y && \
     apt-get install -y libpcre3-dev && \
     stack update && \
-    stack install hfmt hlint tasty-discover hpc-threshold && \
+    stack install stylish-haskell hlint tasty-discover hpc-threshold && \
     stack build --test --only-dependencies 
