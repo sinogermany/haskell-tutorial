@@ -1,7 +1,7 @@
 language: minimal
 
 install:
-- docker-compose build haskell
+- ./scripts/ci/pull-or-build-docker-image.sh
 
 script:
-- ./scripts/style-check-and-unit-test.sh
+- ./scripts/ci/style-check-and-unit-test.sh

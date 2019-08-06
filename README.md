@@ -1,3 +1,5 @@
+Travis Build: [![Build Status](https://travis-ci.com/sinogermany/haskell-tutorial.svg?branch=master)](https://travis-ci.com/sinogermany/haskell-tutorial)
+
 # Haskell Tutorial
 
 This repo consists of exercises to learn Haskell and Functional Programming.
@@ -19,14 +21,14 @@ however we will also occasionally make some minor adjustment. Style check is don
 
 ## Installing dependencies
 
-See dependencies specified in [`package.yaml`](package.yaml). 
+See dependencies specified in [`package.yaml`](package.yaml).
 - To install the dependencies in your local environment, run `stack build --test --only-dependencies`.
 - To run the code in a docker container, run `docker-compose build haskell`.
 
 ## Running the tests (docker required)
 
 - Build the docker image `docker-compose build haskell` (takes a few minutes)
-- Run the style check and test `docker-compose run --rm haskell ./scripts/style-check-and-unit-test.sh`
+- Run the style check and test `docker-compose run --rm haskell ./scripts/docker/style-check-and-unit-test.sh`
 - Test coverage report will be included in the console output.
 
 ## Useful Links

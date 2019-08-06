@@ -3,22 +3,22 @@
     , thresholdRegex = "(\\d+)% expressions used"
     , thresholdValue = 100.0
     }
-, Threshold 
+, Threshold
     { thresholdName = "Boolean coverage"
     , thresholdRegex = "(\\d+)% boolean coverage"
     , thresholdValue = 50.0
     }
-, Threshold 
+, Threshold
     { thresholdName = "Alternatives used"
     , thresholdRegex = "(\\d+)% alternatives used"
     , thresholdValue = 100.0
     }
-, Threshold 
+, Threshold
     { thresholdName = "Local declarations used"
     , thresholdRegex = "(\\d+)% local declarations used"
     , thresholdValue = 100.0
     }
-, Threshold 
+, Threshold
     { thresholdName = "Top-level declarations used"
     , thresholdRegex = "(\\d+)% top-level declarations used"
     , thresholdValue = 100.0
