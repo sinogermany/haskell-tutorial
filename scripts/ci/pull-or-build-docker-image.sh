@@ -9,8 +9,6 @@ DOCKER_TAG="${STACK_MD5}-${PACKAGE_MD5}"
 DOCKER_IMAGE="$DOCKER_USERNAME/$DOCKER_REPO_NAME:$DOCKER_TAG"
 LOCAL_IMAGE="haskell-tutorial:local"
 
-echo image: $DOCKER_IMAGE
-
 function docker_login() {
   echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 }
