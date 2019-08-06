@@ -5,3 +5,7 @@ install:
 
 script:
 - ./scripts/ci/style-check-and-unit-test.sh
+
+branches:
+  only:
+  - master
