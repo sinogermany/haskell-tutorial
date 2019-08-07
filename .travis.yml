@@ -6,7 +6,7 @@ install:
 script:
 - ./scripts/ci/style-check-and-unit-test.sh
 
-after_script::
+after_success:
 - ./scripts/ci/report-coverage.sh
 
 branches:
