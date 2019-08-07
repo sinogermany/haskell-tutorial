@@ -3,9 +3,7 @@
 set -e
 
 DOCKER_REPO_NAME="haskell-dev"
-STACK_MD5=$(md5sum stack.yaml | cut -d ' ' -f 1)
-PACKAGE_MD5=$(md5sum package.yaml | cut -d ' ' -f 1)
-DOCKER_TAG="${STACK_MD5}-${PACKAGE_MD5}"
+DOCKER_TAG=$(cat stack.yaml package.yaml Dockerfile-dev docker-compose.yml scripts/**/* | md5sum | cut -d ' ' -f 1)
 DOCKER_IMAGE="$DOCKER_USERNAME/$DOCKER_REPO_NAME:$DOCKER_TAG"
 LOCAL_IMAGE="haskell-tutorial:local"
 

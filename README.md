@@ -1,4 +1,5 @@
-Travis Build: [![Build Status](https://travis-ci.com/sinogermany/haskell-tutorial.svg?branch=master)](https://travis-ci.com/sinogermany/haskell-tutorial)
+[![Build Status](https://travis-ci.com/sinogermany/haskell-tutorial.svg?branch=master)](https://travis-ci.com/sinogermany/haskell-tutorial)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Haskell Tutorial
 
@@ -16,19 +17,28 @@ The project structure follows the normal convention:
 
 ## Code Style
 
-We try to follow [the guideline from haskell.org](https://wiki.haskell.org/Programming_guidelines) in most cases,
-however we will also occasionally make some minor adjustment. Style check is done by [`hlint`](https://hackage.haskell.org/package/hlint).
+- We try to follow [the guideline from haskell.org](https://wiki.haskell.org/Programming_guidelines) in most cases,
+however we will also occasionally make some minor adjustment.
+- Style check is done by [`hlint`](https://hackage.haskell.org/package/hlint).
+- Code formatting is done by [`stylish-haskell`](https://hackage.haskell.org/package/stylish-haskell).
 
-## Installing dependencies
+## Dev and test dependencies
 
-See dependencies specified in [`package.yaml`](package.yaml).
-- To install the dependencies in your local environment, run `stack build --test --only-dependencies`.
-- To run the code in a docker container, run `docker-compose build haskell`.
+To run the tests in the project, we need:
+- Binary dependencies: `stylish-haskell`, `hlint`, `tasty-discover`, `hpc-threshold` and `stack-hpc-coveralls (CI only)`.
+- Library dependencies: see dependencies specified in [`package.yaml`](package.yaml).
 
-## Running the tests (docker required)
+## Running the tests (in the local environment)
 
-- Build the docker image `docker-compose build haskell` (takes a few minutes)
-- Run the style check and test `docker-compose run --rm haskell ./scripts/docker/style-check-and-unit-test.sh`
+- To install the binary dependencies, run `stack install stylish-haskell hlint tasty-discover hpc-threshold`.
+- To install the library dependencies, run `stack build --test --only-dependencies`.
+- Run `./scripts/docker/style-check-and-unit-test.sh`.
+
+## Running the tests (in a docker container)
+
+- Before building the docker image, _DO_ _NOT_ _FORGET_ to increase the docker daemon RAM to 8GB or more.
+- To build the docker image, run `docker-compose build haskell`.
+- Run the style check and test `docker-compose run --rm haskell ./scripts/docker/style-check-and-unit-test.sh`.
 - Test coverage report will be included in the console output.
 
 ## Useful Links
