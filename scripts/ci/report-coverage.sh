@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-shc haskell-tutorial haskell-tutorial-test
+docker-compose run --rm haskell shc haskell-tutorial haskell-tutorial-test
