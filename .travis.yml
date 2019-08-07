@@ -8,3 +8,7 @@ script:
 
 after_script::
 - ./scripts/ci/report-coverage.sh
+
+branches:
+  only:
+    master
