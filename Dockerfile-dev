@@ -2,12 +2,6 @@ FROM haskell:8.6.5
 
 WORKDIR /haskell-tutorial
 
-ADD stack.yaml package.yaml /haskell-tutorial/
+ADD stack.yaml package.yaml ./scripts/docker/dev-image-setup.sh /haskell-tutorial/
 
-RUN \
-    apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y libpcre3-dev && \
-    stack update && \
-    stack install stylish-haskell hlint tasty-discover hpc-threshold && \
-    stack build --test --only-dependencies
+RUN ./dev-image-setup.sh

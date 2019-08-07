@@ -6,5 +6,5 @@ services:
       context: .
       dockerfile: Dockerfile-dev
     volumes:
-      - .:/haskell-tutorial
+      - .:/haskell-tutorial:cached
     working_dir: /haskell-tutorial
