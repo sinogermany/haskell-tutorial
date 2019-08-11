@@ -16,8 +16,8 @@ hanoi 0 _ _ _                  = []
 hanoi 1 start destination _    = [(start, destination)]
 hanoi n start destination temp
   | 0 > n     = []
-  | otherwise =
-      hanoi n' start temp destination ++
-      [(start, destination)] ++
-      hanoi n' temp destination start
-      where n' = n - 1
+  | otherwise = hanoi n' start temp destination
+                ++ [(start, destination)]
+                ++ hanoi n' temp destination start
+              where
+                n' = n - 1
