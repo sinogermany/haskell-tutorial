@@ -1,4 +1,4 @@
-module CIS194.Homework02.Exercise01 (parseMessage) where
+module CIS194.Homework02.Exercise01 (parseMessage, parse) where
 
 import CIS194.Homework02.Log
 
@@ -29,3 +29,6 @@ parseMessage logLine = case words logLine of
                          ("W" : ts : body)           -> warn ts body
                          ("E" : errCode : ts : body) -> err errCode ts body
                          _                           -> Unknown logLine
+
+parse :: String -> [LogMessage]
+parse = map parseMessage . lines

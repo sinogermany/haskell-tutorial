@@ -44,3 +44,13 @@ spec_parseMessage = do
 
   it "parse an unknown message" $
     parseMessage "UnknownType 1 2 Some message" `shouldBe` Unknown "UnknownType 1 2 Some message"
+
+spec_parse :: Spec
+spec_parse =
+
+  it "turns a multi-lines string into [LogMessage]" $ do
+    let msg  = "I 1 Some message\nW 2 Some message\nE 3 4 Some message"
+    let logs = [ LogMessage Info 1 "Some message"
+               , LogMessage Warning 2 "Some message"
+               , LogMessage (Error 3) 4 "Some message" ]
+    parse msg `shouldBe` logs
