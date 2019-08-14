@@ -15,9 +15,8 @@ spec_insert = do
     it "returns the same tree" $ do
       let log  = Unknown "Some message"
       let info = LogMessage Info 1 "Some message"
-      let leaf = Leaf
       let tree = Node Leaf info Leaf
-      insert log leaf `shouldBe` leaf
+      insert log Leaf `shouldBe` Leaf
       insert log tree `shouldBe` tree
 
   describe "with a Leaf node" $
