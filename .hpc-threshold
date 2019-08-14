@@ -1,4 +1,4 @@
-[ Threshold 
+[ Threshold
     { thresholdName = "Expressions used"
     , thresholdRegex = "(\\d+)% expressions used"
     , thresholdValue = 100.0
@@ -21,6 +21,6 @@
 , Threshold
     { thresholdName = "Top-level declarations used"
     , thresholdRegex = "(\\d+)% top-level declarations used"
-    , thresholdValue = 100.0
+    , thresholdValue = 90.0
     }
 ]

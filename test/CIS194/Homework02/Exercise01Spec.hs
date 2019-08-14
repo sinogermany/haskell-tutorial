@@ -9,7 +9,7 @@ import Control.Exception (evaluate)
 spec_parseMessage :: Spec
 spec_parseMessage = do
 
-  describe "parse an info message" $ do
+  context "parse an info message" $ do
 
     it "with a valid timestamp" $
       parseMessage "I 1 Some message" `shouldBe` LogMessage Info 1 "Some message"
@@ -20,7 +20,7 @@ spec_parseMessage = do
     it "with an invalid timestamp" $
       parseMessage "I Some message" `shouldBe` Unknown "I Some message"
 
-  describe "parse a warning message" $ do
+  context "parse a warning message" $ do
 
     it "with a valid timestamp" $
       parseMessage "W 1 Some message" `shouldBe` LogMessage Warning 1 "Some message"
@@ -31,7 +31,7 @@ spec_parseMessage = do
     it "with an invalid timestamp" $
       parseMessage "W Some message" `shouldBe` Unknown "W Some message"
 
-  describe "parse an error message" $ do
+  context "parse an error message" $ do
 
     it "with a valid error code and timestamp" $
       parseMessage "E 1 2 Some message" `shouldBe` LogMessage (Error 1) 2 "Some message"
