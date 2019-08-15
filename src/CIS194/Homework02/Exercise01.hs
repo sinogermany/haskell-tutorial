@@ -4,7 +4,6 @@ module CIS194.Homework02.Exercise01 (parseMessage, parse) where
 
 import CIS194.Homework02.Log
 
-import Control.Monad.Zip
 import Text.Read
 
 parseMessage :: String -> LogMessage
