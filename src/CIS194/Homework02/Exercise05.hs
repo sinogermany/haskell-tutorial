@@ -3,18 +3,13 @@ module CIS194.Homework02.Exercise05 (whatWentWrong) where
 import CIS194.Homework02.Log
 
 import Data.List
+import Data.Maybe
 
-isHighSeverityErr :: LogMessage -> Bool
-isHighSeverityErr (LogMessage (Error severity) _ _) = 50 <= severity
-isHighSeverityErr _                                 = False
-
--- partial function, only used by `whatWentWrong` after `isHighSeverityErr`
-getTs :: LogMessage -> TimeStamp
-getTs (LogMessage _ ts _) = ts
-
--- partial function, only used by `whatWentWrong` after `isHighSeverityErr`
-getMsgBody :: LogMessage -> String
-getMsgBody (LogMessage _ _ msgBody) = msgBody
+extract :: LogMessage -> Maybe (TimeStamp, String)
+extract (LogMessage (Error sv) ts body)
+  | 50 <= sv  = Just (ts, body)
+  | otherwise = Nothing
+extract _     = Nothing
 
 whatWentWrong :: [LogMessage] -> [String]
-whatWentWrong = map getMsgBody . sortOn getTs . filter isHighSeverityErr
+whatWentWrong = map snd . sortOn fst . mapMaybe extract
