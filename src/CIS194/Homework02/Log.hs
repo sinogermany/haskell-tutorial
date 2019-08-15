@@ -3,10 +3,11 @@ module CIS194.Homework02.Log where
 import Control.Applicative
 
 type TimeStamp   = Int
+type Severity    = Int
 
 data MessageType = Info
                  | Warning
-                 | Error Int
+                 | Error Severity
                  deriving (Show, Eq)
 
 data LogMessage  = LogMessage MessageType TimeStamp String

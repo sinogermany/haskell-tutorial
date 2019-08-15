@@ -8,11 +8,11 @@ isHighSeverityErr :: LogMessage -> Bool
 isHighSeverityErr (LogMessage (Error severity) _ _) = 50 <= severity
 isHighSeverityErr _                                 = False
 
--- partial function, only used by `whatWentWrong`
+-- partial function, only used by `whatWentWrong` after `isHighSeverityErr`
 getErrTs :: LogMessage -> Int
 getErrTs (LogMessage (Error _) ts _) = ts
 
--- partial function, only used by `whatWentWrong`
+-- partial function, only used by `whatWentWrong` after `isHighSeverityErr`
 getErrMsg :: LogMessage -> String
 getErrMsg (LogMessage (Error _) _ msg) = msg
 
