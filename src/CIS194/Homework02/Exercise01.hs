@@ -27,7 +27,7 @@ msgTypeParser =
   <|> Log.Error . read <$> digitsAfter 'E'
 
 tsParser :: Parser Log.TimeStamp
-tsParser = fmap read (many1 digit)
+tsParser = read <$> many1 digit
 
 bodyParser :: Parser String
 bodyParser = manyTill anyChar eof
