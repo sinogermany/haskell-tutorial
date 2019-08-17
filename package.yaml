@@ -20,6 +20,8 @@ description:         Please see the README on GitHub at <https://github.com/sino
 
 dependencies:
 - base >= 4.7 && < 5
+- text == 1.2.3.1
+- parsec == 3.1.13.0
 
 library:
   source-dirs: src

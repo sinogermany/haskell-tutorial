@@ -12,12 +12,10 @@ type Move  = (Peg, Peg)
   3. move n − 1 discs from c to b using a as temporary storage.
 -}
 hanoi :: Disks -> Peg -> Peg -> Peg -> [Move]
-hanoi 0 _ _ _                  = []
-hanoi 1 start destination _    = [(start, destination)]
 hanoi n start destination temp
-  | 0 > n     = []
-  | otherwise =
-      hanoi n' start temp destination ++
-      [(start, destination)] ++
-      hanoi n' temp destination start
-      where n' = n - 1
+  | 0 >= n    = []
+  | otherwise = hanoi n' start temp destination
+                ++ [(start, destination)]
+                ++ hanoi n' temp destination start
+              where
+                n' = n - 1
