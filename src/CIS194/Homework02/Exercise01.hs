@@ -1,23 +1,48 @@
-{-# LANGUAGE ViewPatterns, ScopedTypeVariables #-}
+{-# LANGUAGE FlexibleContexts #-}
 
-module CIS194.Homework02.Exercise01 (parseMessage, parse) where
+module CIS194.Homework02.Exercise01 (parseMessage, parseMessages) where
 
-import CIS194.Homework02.Log
+import qualified CIS194.Homework02.Log as Log
 
-import Text.Read
+import           Data.Text             hiding (lines, map)
+import           Text.Parsec
+import           Text.Parsec.Text
 
-parseMessage :: String -> LogMessage
-parseMessage ( words -> "I"
-             : (readMaybe -> Just (ts :: TimeStamp))
-             : body ) = LogMessage Info ts $ unwords body
-parseMessage ( words -> "W"
-             : (readMaybe -> Just (ts :: TimeStamp))
-             : body ) = LogMessage Warning ts $ unwords body
-parseMessage ( words -> "E"
-             : (readMaybe -> Just (sv :: Severity))
-             : (readMaybe -> Just (ts :: TimeStamp))
-             : body ) = LogMessage (Error sv) ts $ unwords body
-parseMessage logLine  = Unknown logLine
+skipSpaces :: Parser ()
+skipSpaces = skipMany1 $ char ' '
 
-parse :: String -> [LogMessage]
-parse = map parseMessage . lines
+skipSpacesIfAny :: Parser ()
+skipSpacesIfAny = skipMany $ char ' '
+
+digitsAfter :: Char -> Parser String
+digitsAfter c = char c *> skipSpaces *> many1 digit
+
+(~>) :: Char -> value -> Parser value
+c ~> t = char c >> pure t
+
+msgTypeParser :: Parser Log.MessageType
+msgTypeParser =
+      'I' ~> Log.Info
+  <|> 'W' ~> Log.Warning
+  <|> Log.Error . read <$> digitsAfter 'E'
+
+tsParser :: Parser Log.TimeStamp
+tsParser = fmap read (many1 digit)
+
+bodyParser :: Parser String
+bodyParser = manyTill anyChar eof
+
+logMsgParser :: Parser Log.LogMessage
+logMsgParser =
+  Log.LogMessage
+  <$> msgTypeParser <* skipSpaces
+  <*> tsParser <* skipSpacesIfAny
+  <*> bodyParser
+
+parseMessage :: String -> Log.LogMessage
+parseMessage msgLine = case parse logMsgParser "" (pack msgLine) of
+                         Right logMsg -> logMsg
+                         _            -> Log.Unknown msgLine
+
+parseMessages :: String -> [Log.LogMessage]
+parseMessages = map parseMessage . lines
