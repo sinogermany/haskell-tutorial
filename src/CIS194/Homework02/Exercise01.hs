@@ -9,21 +9,21 @@ import           Text.Parsec
 import           Text.Parsec.Text
 
 skipSpaces :: Parser ()
-skipSpaces = skipMany1 $ char ' '
+skipSpaces = skipMany1 . char $ ' '
 
 skipSpacesIfAny :: Parser ()
-skipSpacesIfAny = skipMany $ char ' '
+skipSpacesIfAny = skipMany . char $ ' '
 
 digitsAfter :: Char -> Parser String
 digitsAfter c = char c *> skipSpaces *> many1 digit
 
-(~>) :: Char -> value -> Parser value
-c ~> t = char c >> pure t
+is :: Char -> a -> Parser a
+is c t = char c >> pure t
 
 msgTypeParser :: Parser Log.MessageType
 msgTypeParser =
-      'I' ~> Log.Info
-  <|> 'W' ~> Log.Warning
+      'I' `is` Log.Info
+  <|> 'W' `is` Log.Warning
   <|> Log.Error . read <$> digitsAfter 'E'
 
 tsParser :: Parser Log.TimeStamp
@@ -40,9 +40,9 @@ logMsgParser =
   <*> bodyParser
 
 parseMessage :: String -> Log.LogMessage
-parseMessage msgLine = case parse logMsgParser "" (pack msgLine) of
+parseMessage msgLine = case parse logMsgParser "" . pack $ msgLine of
                          Right logMsg -> logMsg
                          _            -> Log.Unknown msgLine
 
 parseMessages :: String -> [Log.LogMessage]
-parseMessages = map parseMessage . lines
+parseMessages = fmap parseMessage . lines
