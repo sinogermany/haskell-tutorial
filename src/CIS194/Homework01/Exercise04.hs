@@ -10,7 +10,7 @@ type CreditCardNumber = Integer
 (f &&& g) a = f a && g a
 
 hasSixteenDigits :: CreditCardNumber -> Bool
-hasSixteenDigits = (>= (10 ^ 15)) &&& (< (10 ^ 16))
+hasSixteenDigits = (16 == ) . length . toDigits
 
 isDivisibleBy :: Integer -> Integer -> Bool
 isDivisibleBy divisor num = num `rem` divisor == 0
