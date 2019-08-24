@@ -8,4 +8,4 @@ localMax (x, y, z)
   | otherwise      = Nothing
 
 localMaxima :: [Integer] -> [Integer]
-localMaxima xs = mapMaybe localMax $ zip3 xs (drop 1 xs) (drop 2 xs)
+localMaxima = mapMaybe localMax . (zip3 <*> drop 1 <*> drop 2)

@@ -6,7 +6,7 @@
 , Threshold
     { thresholdName = "Boolean coverage"
     , thresholdRegex = "(\\d+)% boolean coverage"
-    , thresholdValue = 50.0
+    , thresholdValue = 55.0
     }
 , Threshold
     { thresholdName = "Alternatives used"
