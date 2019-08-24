@@ -11,13 +11,13 @@ spaces = flip replicate ' '
 starLine :: Int -> String
 starLine nTimes = spaces (10 - nTimes) ++ stars nTimes
 
-count :: [Integer] -> Integer -> Int
-count xs x = length . filter (== x) $ xs
+count :: Eq a => a -> [a] -> Int
+count x = length . filter (==x)
 
 starLines :: [Integer] -> [String]
 starLines xs = filter (/= spaces 10)
              . transpose
-             . fmap (starLine . count xs)
+             . fmap (starLine . flip count xs)
              $ [0..9]
 
 histogram :: [Integer] -> String

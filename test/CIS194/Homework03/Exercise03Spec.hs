@@ -8,7 +8,7 @@ import Test.Tasty.Hspec
 
 t :: [Integer] -> String -> Spec
 t input expectedOutput =
-  it (printf "for %s should be %s" (show input) (show expectedOutput)) $
+  it (printf "test input: %s" (show input)) $
     histogram input `shouldBe` expectedOutput
 
 spec_histogram :: Spec
