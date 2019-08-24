@@ -21,6 +21,6 @@
 , Threshold
     { thresholdName = "Top-level declarations used"
     , thresholdRegex = "(\\d+)% top-level declarations used"
-    , thresholdValue = 91.0
+    , thresholdValue = 92.0
     }
 ]

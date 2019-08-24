@@ -3,5 +3,5 @@
 set -e
 
 hlint .
-stack test --coverage
+stack test --coverage --ghc-options "-Wall -Werror"
 stack hpc report --all 2>&1 | hpc-threshold

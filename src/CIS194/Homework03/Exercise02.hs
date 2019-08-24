@@ -1,8 +1,11 @@
 module CIS194.Homework03.Exercise02 (localMaxima) where
 
-isLocalMax :: [Integer] -> Bool
-isLocalMax [x : y : z] = y > x && y > z
-isLocalMax _           = False
+import Data.Maybe
 
-localMaxima :: [Integer] -> [[Integer]]
-localMaxima a = map (\i -> take 3 . drop i $ a) [0..length a - 3]
+localMax :: (Integer, Integer, Integer) -> Maybe Integer
+localMax (x, y, z)
+  | y > x && y > z = Just y
+  | otherwise      = Nothing
+
+localMaxima :: [Integer] -> [Integer]
+localMaxima xs = mapMaybe localMax $ zip3 xs (drop 1 xs) (drop 2 xs)
