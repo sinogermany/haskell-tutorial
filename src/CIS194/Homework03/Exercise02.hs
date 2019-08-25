@@ -1,11 +1,13 @@
 module CIS194.Homework03.Exercise02 (localMaxima) where
 
-import Data.Maybe
+import Data.List
 
-localMax :: (Integer, Integer, Integer) -> Maybe Integer
-localMax (x, y, z)
-  | y > x && y > z = Just y
-  | otherwise      = Nothing
+isLocalMax :: Ord a => [a] -> Bool
+isLocalMax [x, y, z] | y > x && y > z = True
+isLocalMax _                          = False
+
+window :: Int -> [a] -> [[a]]
+window n = filter ((>= n) . length) . fmap (take n) . tails
 
 localMaxima :: [Integer] -> [Integer]
-localMaxima = mapMaybe localMax . (zip3 <*> drop 1 <*> drop 2)
+localMaxima = map (!!1) . filter isLocalMax . window 3
