@@ -21,4 +21,4 @@ starLines xs = filter (/= spaces 10)
              $ [0..9]
 
 histogram :: [Integer] -> String
-histogram xs = unlines $ starLines xs ++ ["==========", "0123456789"]
+histogram = unlines . (++ ["==========", "0123456789"]) . starLines
