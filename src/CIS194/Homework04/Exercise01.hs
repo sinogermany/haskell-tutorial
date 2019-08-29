@@ -6,7 +6,7 @@ fun1 ::  [Integer] -> Integer
 fun1 = product . fmap (subtract 2) . filter even
 
 fun2 :: Integer -> Integer
-fun2 = bool <$> handleN <*> const 0 <*> (1==)
+fun2 = bool <$> handleN <*> const 0 <*> (<=1)
      where
        handleN    = bool <$> handleOdd <*> handleEven <*> even
        handleOdd  = fun2 . (1+) . (3*)
