@@ -19,6 +19,12 @@ spec_fun1 = do
 spec_fun2 :: Spec
 spec_fun2 = do
 
+  it "returns 0 for input: -1" $
+    fun2 (-1) `shouldBe` 0
+
+  it "returns 0 for input: 0" $
+    fun2 0 `shouldBe` 0
+
   it "returns 0 for input: 1" $
     fun2 1 `shouldBe` 0
 
