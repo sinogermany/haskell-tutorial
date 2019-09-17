@@ -7,6 +7,8 @@ import qualified Data.Map as M
 
 import CIS194.Homework05.Exercise03 (Expr(..))
 
+type VarExpr = M.Map String Integer -> Maybe Integer
+
 class HasVars a where
   var :: String -> a
 
@@ -26,15 +28,13 @@ instance Expr VarExprT where
   mul = Mul
 -}
 
-instance HasVars (M.Map String Integer -> Maybe Integer) where
+instance HasVars VarExpr where
   var = M.lookup
 
-instance Expr (M.Map String Integer -> Maybe Integer) where
+instance Expr VarExpr where
   lit         = const . Just
   add f1 f2 m = (+) <$> f1 m <*> f2 m
   mul f1 f2 m = (*) <$> f1 m <*> f2 m
 
-withVars :: [(String, Integer)]
-         -> (M.Map String Integer -> Maybe Integer)
-         -> Maybe Integer
+withVars :: [(String, Integer)] -> VarExpr -> Maybe Integer
 withVars vs expr = expr $ M.fromList vs
