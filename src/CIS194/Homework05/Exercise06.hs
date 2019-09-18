@@ -37,4 +37,4 @@ instance Expr VarExpr where
   mul f1 f2 m = (*) <$> f1 m <*> f2 m
 
 withVars :: [(String, Integer)] -> VarExpr -> Maybe Integer
-withVars vs expr = expr $ M.fromList vs
+withVars vs expr = expr . M.fromList $ vs
