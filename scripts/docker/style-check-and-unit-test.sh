@@ -2,6 +2,8 @@
 
 set -e
 
-hlint .
+hlint ./src/CIS194/Homework*/Exercise*.hs ./test/CIS194/Homework*/Exercise*.hs
 stack test --coverage --ghc-options="-Wall -Werror"
-stack hpc report --all 2>&1 | hpc-threshold
+
+# https://wiki.haskell.org/Haskell_program_coverage
+# stack hpc report --all 2>&1 | hpc-threshold
