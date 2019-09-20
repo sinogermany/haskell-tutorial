@@ -5,7 +5,7 @@
 
 This repo consists of exercises to learn Haskell and Functional Programming.
 
-Currently it consists of exercises from [`Haskell CIS194`](https://www.seas.upenn.edu/~cis194/fall16/).
+Currently it consists of exercises from [`Haskell CIS194`](https://www.seas.upenn.edu/~cis194/spring13/).
 
 ## Project Structure
 
