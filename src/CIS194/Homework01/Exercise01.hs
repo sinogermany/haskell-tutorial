@@ -1,9 +1,17 @@
+{-# OPTIONS_GHC -fno-warn-type-defaults #-}
+
 module CIS194.Homework01.Exercise01 (toDigits, toDigitsRev) where
 
 toDigits :: Integer -> [Integer]
-toDigits num
-  | 0 >= num  = []
-  | otherwise = toDigits (num `div` 10) ++ [num `mod` 10]
+toDigits = reverse . toDigitsRev
 
 toDigitsRev :: Integer -> [Integer]
-toDigitsRev = reverse . toDigits
+toDigitsRev n = fmap getDigit
+              . enumFromTo 0
+              . floor
+              . logBase 10
+              . fromIntegral
+              $ num
+            where
+              num      = abs n
+              getDigit = (`mod` 10) . (num `div`) . (10 ^)
