@@ -6,7 +6,7 @@ toDigits :: Integer -> [Integer]
 toDigits = reverse . toDigitsRev
 
 toDigitsRev :: Integer -> [Integer]
-toDigitsRev n = getDigit <$> [0..digitCount - 1]
+toDigitsRev n = getDigit <$> [0 .. digitCount - 1]
               where
                 num        = abs n
                 digitCount = max 1 . ceiling . logBase 10 . fromIntegral $ num
