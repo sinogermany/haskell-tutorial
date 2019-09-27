@@ -6,12 +6,8 @@ toDigits :: Integer -> [Integer]
 toDigits = reverse . toDigitsRev
 
 toDigitsRev :: Integer -> [Integer]
-toDigitsRev n = fmap getDigit
-              . enumFromTo 0
-              . floor
-              . logBase 10
-              . fromIntegral
-              $ num
-            where
-              num      = abs n
-              getDigit = (`mod` 10) . (num `div`) . (10 ^)
+toDigitsRev n = getDigit <$> [0..digitCount - 1]
+              where
+                num        = abs n
+                digitCount = max 1 . ceiling . logBase 10 . fromIntegral $ num
+                getDigit   = (`mod` 10) . (num `div`) . (10 ^)
