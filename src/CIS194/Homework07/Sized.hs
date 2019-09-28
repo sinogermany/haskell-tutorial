@@ -1,5 +1,5 @@
 {-# LANGUAGE GeneralizedNewtypeDeriving, FlexibleInstances #-}
-module Sized where
+module CIS194.Homework07.Sized where
 
 import Data.Monoid
 

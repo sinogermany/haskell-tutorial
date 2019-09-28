@@ -3,7 +3,7 @@ module Buffer where
 -- Type class for data structures that can represent the text buffer
 -- of an editor.
 
-class Buffer b where
+class CIS194.Homework07.Buffer b where
 
   -- | Convert a buffer to a String.
   toString :: b -> String

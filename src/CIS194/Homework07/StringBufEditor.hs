@@ -1,7 +1,7 @@
-module Main where
+module CIS194.Homework07.StringBufEditor where
 
-import StringBuffer
-import Editor
+import CIS194.Homework07.StringBuffer
+import CIS194.Homework07.Editor
 
 main = runEditor editor $ unlines
          [ "This buffer is for notes you don't want to save, and for"
