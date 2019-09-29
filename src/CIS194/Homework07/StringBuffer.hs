@@ -1,7 +1,9 @@
-{-# LANGUAGE FlexibleInstances, TypeSynonymInstances #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# OPTIONS_GHC -fno-warn-orphans #-}
+
 module CIS194.Homework07.StringBuffer where
 
-import Data.Monoid
+import Data.Monoid ()
 
 import CIS194.Homework07.Buffer
 
@@ -9,7 +11,7 @@ instance Buffer String where
   toString     = id
   fromString   = id
   line n b     = safeIndex n (lines b)
-  replaceLine n l b = unlines . uncurry replaceLine' . splitAt n . lines $ b
+  replaceLine n l = unlines . uncurry replaceLine' . splitAt n . lines
       where replaceLine' pre [] = pre
             replaceLine' pre (_:ls) = pre ++ l:ls
   numLines     = length . lines
