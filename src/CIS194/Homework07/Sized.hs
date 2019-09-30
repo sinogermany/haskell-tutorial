@@ -28,4 +28,3 @@ instance Semigroup Size where
 
 instance Monoid Size where
   mempty  = Size 0
-  mappend = (+)
