@@ -4,8 +4,6 @@ module CIS194.Homework08.Exercise01 (glCons, moreFun) where
 
 import CIS194.Homework08.Employee (Employee(..), GuestList(..))
 
-import Data.Bool
-
 instance Semigroup GuestList where
   (GL gs1 f1) <> (GL gs2 f2) = GL (gs1 ++ gs2) (f1 + f2)
 
@@ -25,4 +23,4 @@ glCons :: Employee -> GuestList -> GuestList
 glCons e (GL gs f) = GL (e : gs) (f + empFun e)
 
 moreFun :: GuestList -> GuestList -> GuestList
-moreFun gl1 gl2 = bool gl2 gl1 $ totalFun gl1 > totalFun gl2
+moreFun = max
