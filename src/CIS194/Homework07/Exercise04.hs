@@ -26,7 +26,7 @@ instance Buffer JoinListBuffer where
   fromString = mconcat . fmap toSingle . lines
              where
                toSingle = flip Single <*> annotations
-               annotations = (,) . scoreString <*> const (Size 1)
+               annotations s = (scoreString s, Size 1)
 
   -- | Extract the nth line (0-indexed) from a buffer.  Return Nothing
   -- for out-of-bounds indices.
