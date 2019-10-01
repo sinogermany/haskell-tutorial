@@ -54,5 +54,5 @@ download_and_install_latest_hlint_binary
 download_and_install_latest_shc_binary
 
 stack update
-stack install tasty-discover hpc-threshold
+stack install apply-refact tasty-discover hpc-threshold
 stack build --test --only-dependencies
